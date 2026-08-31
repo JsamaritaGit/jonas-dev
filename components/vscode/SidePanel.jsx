@@ -23,51 +23,28 @@ const VIEWS = [
   { id: "extensions", icon: ExtensionsIcon, label: "Extensions", shortcut: "Ctrl+Shift+X" },
 ];
 
-// Nested workspace tree for the Explorer panel. Files with `href` navigate
+// Nested profile tree for the Explorer panel. Files with `href` navigate
 // to a route (and highlight when active); the rest are decorative.
 const TREE = [
   {
     type: "folder",
-    name: "app",
+    name: "Jonas Samarita",
     children: [
-      { type: "file", name: "layout.js", href: null },
-      { type: "file", name: "page.js", href: "/", accent: "text-orange-300" },
-      { type: "file", name: "globals.css", href: null },
+      { type: "file", name: "Current stack", href: "/", accent: "text-sky-300" },
+      { type: "file", name: "Current work", href: "/about", accent: "text-teal-300" },
       {
         type: "folder",
-        name: "about",
+        name: "Work experiences",
         children: [
-          { type: "file", name: "page.js", href: "/about", accent: "text-teal-300" },
+          { type: "file", name: "Sanyo Denki Philippines, Inc.", href: null, accent: "text-sky-300" },
+          { type: "file", name: "Exela Technologies", href: null, accent: "text-sky-300" },
+          { type: "file", name: "Merry Telecommunication", href: null, accent: "text-sky-300" },
+          { type: "file", name: "Kolehiyo ng Subic", href: null, accent: "text-sky-300" },
         ],
       },
-      {
-        type: "folder",
-        name: "projects",
-        children: [
-          { type: "file", name: "page.js", href: "/projects", accent: "text-purple-300" },
-        ],
-      },
+      { type: "file", name: "Contact Info", href: null, accent: "text-orange-300" },
     ],
   },
-  {
-    type: "folder",
-    name: "components",
-    children: [
-      {
-        type: "folder",
-        name: "vscode",
-        children: [
-          { type: "file", name: "EditorTabs.jsx", href: null },
-          { type: "file", name: "SidePanel.jsx", href: null },
-          { type: "file", name: "StatusBar.jsx", href: null },
-          { type: "file", name: "TitleBar.jsx", href: null },
-          { type: "file", name: "icons.jsx", href: null },
-        ],
-      },
-    ],
-  },
-  { type: "file", name: "package.json", href: null },
-  { type: "file", name: "next.config.mjs", href: null },
 ];
 
 const INSTALLED_EXTENSIONS = [

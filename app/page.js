@@ -8,80 +8,243 @@ import {
   va,
   pn,
 } from "@/components/vscode/syntax";
-import { StatCard, PanelTitle, TextMuted } from "@/components/vscode/ui";
+import { Badge, PanelTitle, TextMuted } from "@/components/vscode/ui";
+import profilePic from "@/app/resources/jonas-profile-pic.jpg";
+
+const TIMELINE = [
+  {
+    year: "2020-21",
+    title: "Early Career Development",
+    points: [
+      "Started as a secondary developer (junior developer).",
+      "Learned VB6 and .NET fundamentals.",
+      "Gained experience with WinForms and SQL Server.",
+    ],
+  },
+  {
+    year: "2023",
+    title: "C#/.NET Developer",
+    points: [
+      "Started as a C#/.NET developer.",
+      "Worked with WinForms and SQL Server.",
+      "Learned existing systems, business processes, and database structures.",
+    ],
+  },
+  {
+    year: "2024",
+    title: "Application Development",
+    points: [
+      "Developed new features and business applications.",
+      "Expanded skills in C#, Dapper, T-SQL, and database development.",
+      "Started using Git and ClickOnce deployment.",
+    ],
+  },
+  {
+    year: "2025",
+    title: "Advanced Development",
+    points: [
+      "Focused on application architecture, performance, and security.",
+      "Improved SQL queries and large-data processing.",
+      "Applied async programming and reusable components.",
+    ],
+  },
+  {
+    year: "2026",
+    title: "Full-Stack Development",
+    points: [
+      "Expanded into modern web development.",
+      "Working with Next.js, React, TypeScript, Tailwind CSS, and Supabase.",
+      "Developing full-stack applications with authentication, authorization, and cloud deployment.",
+    ],
+  },
+];
+
+const SKILLS = [
+  "C#",
+  ".NET",
+  "WinForms",
+  "SQL Server",
+  "Dapper",
+  "T-SQL",
+  "Next.js",
+  "React",
+  "TypeScript",
+  "Tailwind CSS",
+  "Supabase",
+  "Git",
+  "GitHub",
+  "Vercel",
+];
 
 export default function Home() {
   return (
     <EditorFile
       filename="home.jsx"
       language="JavaScript JSX"
-      previewLabel="Dashboard"
+      previewLabel="Profile"
       preview={
         <>
-          <PanelTitle>Dashboard</PanelTitle>
-          <TextMuted>
-            This is the live preview of the{" "}
-            <span className="font-mono text-fg">home.jsx</span> template. Edit
-            the code above and this pane reflects your changes.
-          </TextMuted>
-          <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
-            <StatCard label="Total tabs" value="3" hint="3 open tabs" />
-            <StatCard label="Active" value="2" hint="in progress" />
-            <StatCard label="Deployed" value="14" hint="this quarter" />
-            <StatCard label="Uptime" value="99.9%" hint="last 30 days" />
+          <div className="relative -m-5 flex min-h-[calc(100%+2.5rem)] flex-col overflow-hidden">
+            {/* Blurred profile photo background
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-70 blur-lg"
+              style={{ backgroundImage: `url(${profilePic.src})` }}
+            /> */}
+            <div className="relative z-10 flex-1 p-5">
+              <div className="mx-auto max-w-5xl">
+                <div className="grid auto-rows-fr grid-cols-1 gap-4 md:grid-cols-3">
+                  {/* Profile hero */}
+                  <div className="flex flex-col gap-4 rounded-md border border-chrome-strong bg-editor p-5 md:col-span-2 md:row-span-2">
+                    <div className="flex items-center gap-4">
+                      <img
+                        src={profilePic.src}
+                        alt="Jonas"
+                        className="h-16 w-16 shrink-0 rounded-full border-2 border-chrome-strong object-cover"
+                      />
+                      <div>
+                        <div className="text-lg font-semibold text-fg">
+                          Jonas
+                        </div>
+                        <div className="font-mono text-[13px] text-sky-300">
+                          Full-stack Developer
+                        </div>
+                        <div className="font-mono text-[11px] text-fg-dim">
+                          Subic, Philippines
+                        </div>
+                      </div>
+                    </div>
+                    <TextMuted>
+                      Full-stack developer building fast, minimal tools with the
+                      Next.js App Router — from C#/.NET business applications to
+                      modern full-stack web development.
+                    </TextMuted>
+                    <div className="mt-auto flex flex-wrap gap-2">
+                      <a
+                        href="mailto:jonas27samarita@gmail.com"
+                        className="rounded-sm bg-selection px-2 py-1 font-mono text-[11px] text-sky-200 hover:brightness-125"
+                      >
+                        jonas27samarita@gmail.com
+                      </a>
+                      <a
+                        href="https://www.linkedin.com/in/jonas-samarita-922695247/"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="rounded-sm bg-selection px-2 py-1 font-mono text-[11px] text-sky-200 hover:brightness-125"
+                      >
+                        linkedin
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Current Skills */}
+                  <div className="rounded-md border border-chrome-strong bg-editor p-5 md:col-span-1 md:row-span-2">
+                    <PanelTitle className="mb-0!">Current Skills</PanelTitle>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {SKILLS.map((s, i) => (
+                        <Badge
+                          key={s}
+                          color={
+                            i % 2 === 0
+                              ? "bg-selection text-sky-200"
+                              : "bg-selection text-teal-200"
+                          }
+                        >
+                          {s}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* C# Developer */}
+                  <div className="rounded-md border border-chrome-strong bg-editor p-4 md:col-span-1">
+                    <PanelTitle className="mb-0!">C# Developer</PanelTitle>
+                    <div className="mt-1 font-mono text-[11px] text-fg-dim">
+                      December 2023 – Present
+                    </div>
+                    <TextMuted className="mt-2">
+                      Business applications — automation, system improvements,
+                      database-driven solutions, and application performance.
+                    </TextMuted>
+                  </div>
+
+                  {/* Career Progress */}
+                  {TIMELINE.map((e) => (
+                    <div
+                      key={e.year}
+                      className="rounded-md border border-chrome-strong bg-editor p-4 md:col-span-1"
+                    >
+                      <div className="font-mono text-sm font-semibold text-sky-300">
+                        {e.year}
+                      </div>
+                      <div className="mt-0.5 text-[13px] font-semibold text-fg">
+                        {e.title}
+                      </div>
+                      <ul className="mt-2 space-y-1.5">
+                        {e.points.map((p) => (
+                          <li
+                            key={p}
+                            className="flex gap-2 text-[12px] leading-4 text-fg-muted"
+                          >
+                            <span className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-fg-dim" />
+                            {p}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </>
       }
     >
       <Line n={1}>
-        {kw("import")} {"{ "}{va("StatCard")}{" }"} {kw("from")} {str("'../components/stat-card'")}
+        {kw("import")} {"{ "}{va("BentoCard")}{" }"} {kw("from")} {str("'../components/bento'")}
       </Line>
       <Line n={2}>
-        {kw("import")} {"{ "}{va("useDashboard")}{" }"} {kw("from")} {str("'../hooks/use-dashboard'")}
+        {kw("import")} {va("profile")} {kw("from")} {str("'../data/profile'")}
       </Line>
       <Line n={3} />
-      <Line n={4}>{cm("// Dashboard template — replace with your own home page.")}</Line>
+      <Line n={4}>{cm("// Home — bento layout.")}</Line>
       <Line n={5}>
         {kw("export default function")} {fn("Home")}{pn("()")} {"{"}
       </Line>
       <Line n={6}>
-        {"  "}{kw("const")} {"{ "}{va("total")}{", "}{va("active")}{", "}{va("deployed")}{", "}{va("uptime")}{" }"} = {fn("useDashboard")}{pn("()")}{";"}
-      </Line>
-      <Line n={7} />
-      <Line n={8}>
         {"  "}{kw("return")} {pn("(")}
       </Line>
+      <Line n={7}>
+        {"    "}{pn("<")}{va("section")} {va("className")}={str('"grid grid-cols-3 gap-4"')}{pn(">")}
+      </Line>
+      <Line n={8}>
+        {"      "}{pn("<")}{va("BentoCard")} {va("span")}={str('"col-span-2 row-span-2"')}{pn(">")}
+      </Line>
       <Line n={9}>
-        {"    "}{pn("<")}{va("section")} {va("className")}={str('"p-8"')}{pn(">")}
+        {"        "}{pn("<")}{va("img")} {va("src")}={pn("{")}{va("profile")}{pn(".")}{va("photo")}{pn("}")} {pn("/>")}
       </Line>
       <Line n={10}>
-        {"      "}{pn("<")}{va("h1")} {va("className")}={str('"text-2xl font-bold"')}{pn(">")}{str("Welcome back, Jonas")}{pn("</")}{va("h1")}{pn(">")}
+        {"        "}{pn("<")}{va("h1")}{pn(">")}{pn("{")}{va("profile")}{pn(".")}{va("name")}{pn("}")}{pn("</")}{va("h1")}{pn(">")}
       </Line>
       <Line n={11}>
-        {"      "}{pn("<")}{va("div")} {va("className")}={str('"mt-6 grid grid-cols-4 gap-4"')}{pn(">")}
+        {"      "}{pn("</")}{va("BentoCard")}{pn(">")}
       </Line>
       <Line n={12}>
-        {"        "}{pn("<")}{va("StatCard")} {va("label")}={str('"Total tabs"')} {va("value")}={pn("{")}{va("total")}{pn("}")} {pn("/>")}
+        {"      "}{pn("{")}{va("profile")}{pn(".")}{va("skills")}{pn(".")}{fn("map")}{pn("(")}{pn("(")}{va("s")}{pn(")")} {kw("=>")} {pn("(")}
       </Line>
       <Line n={13}>
-        {"        "}{pn("<")}{va("StatCard")} {va("label")}={str('"Active"')} {va("value")}={pn("{")}{va("active")}{pn("}")} {pn("/>")}
+        {"        "}{pn("<")}{va("Badge")} {va("key")}={pn("{")}{va("s")}{pn("}")}{pn(">")}{pn("{")}{va("s")}{pn("}")}{pn("</")}{va("Badge")}{pn(">")}
       </Line>
       <Line n={14}>
-        {"        "}{pn("<")}{va("StatCard")} {va("label")}={str('"Deployed"')} {va("value")}={pn("{")}{va("deployed")}{pn("}")} {pn("/>")}
+        {"      "}{pn(")")}{pn(")")}
       </Line>
       <Line n={15}>
-        {"        "}{pn("<")}{va("StatCard")} {va("label")}={str('"Uptime"')} {va("value")}={pn("{")}{va("uptime")}{pn("}")} {pn("/>")}
-      </Line>
-      <Line n={16}>
-        {"      "}{pn("</")}{va("div")}{pn(">")}
-      </Line>
-      <Line n={17}>
         {"    "}{pn("</")}{va("section")}{pn(">")}
       </Line>
-      <Line n={18}>
+      <Line n={16}>
         {"  "}{pn(")")}
       </Line>
-      <Line n={19}>{pn("}")}</Line>
+      <Line n={17}>{pn("}")}</Line>
     </EditorFile>
   );
 }

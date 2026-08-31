@@ -4,222 +4,235 @@ import {
   kw,
   fn,
   str,
+  cm,
   va,
   pn,
 } from "@/components/vscode/syntax";
 import { Badge, PanelTitle, TextMuted } from "@/components/vscode/ui";
+import profilePic from "@/app/resources/jonas-profile-pic.jpg";
+
+const EXPERIENCE = [
+  {
+    role: "System Developer/Programmer",
+    company: "Sanyo Denki Philippines, Inc.",
+    period: "December 2023 – Present",
+    location: "Subic Bay Freeport Zone, Philippines",
+    current: true,
+    points: ["Manages software development & maintenance."],
+  },
+  {
+    role: "Data Entry Operator",
+    company: "Exela Technologies",
+    period: "September 2023 – November 2023",
+    location: "Subic, Philippines",
+    points: [
+      "Inserted customer and account data from source documents within time limits.",
+      "Compiled, verified accuracy, and sorted information according to priorities.",
+      "Reviewed data for deficiencies or errors and checked output.",
+    ],
+  },
+  {
+    role: "Administrative Staff",
+    company: "Merry Telecommunication Installation Services",
+    period: "September 2021 – March 2023",
+    location: "Philippines",
+    points: ["Monitored project progress.", "Processed billing documents."],
+  },
+  {
+    role: "Secondary Developer",
+    company: "Kolehiyo ng Subic",
+    period: "June 2020 – September 2021",
+    location: "Subic, Philippines",
+    points: [
+      "Handled database maintenance.",
+      "Developed the school's current enrolment system.",
+    ],
+  },
+  {
+    role: "Administrative Clerk",
+    company: "Kolehiyo ng Subic",
+    period: "June 2019 – July 2020",
+    location: "Subic, Zambales",
+    points: [],
+  },
+];
 
 export default function About() {
   return (
     <EditorFile
       filename="about.jsx"
       language="JavaScript JSX"
-      previewLabel="About Me"
+      previewLabel="Job History"
       preview={
         <>
-          <div className="mx-auto max-w-3xl">
-            {/* Profile header */}
-            <div className="flex items-start gap-5">
-              <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full border border-chrome-strong bg-editor-soft text-3xl font-semibold text-sky-300">
-                J
-              </div>
-              <div>
-                <PanelTitle>Jonas</PanelTitle>
+          <div className="mx-auto max-w-5xl">
+            <div className="grid auto-rows-fr grid-cols-1 gap-4 md:grid-cols-3">
+              {/* Profile hero */}
+              <div className="flex flex-col gap-4 rounded-md border border-chrome-strong bg-editor p-5 md:col-span-2 md:row-span-2">
+                <div>
+                  <div className="text-lg font-semibold text-fg">
+                    Jonas Samarita
+                  </div>
+                  <div className="mt-0.5 font-mono text-[13px] text-sky-300">
+                    Software Developer/Programmer
+                  </div>
+                  <div className="mt-0.5 font-mono text-[11px] text-fg-dim">
+                    Subic, Central Luzon, Philippines
+                  </div>
+                </div>
                 <TextMuted>
-                  Full-stack developer building fast, minimal tools with the
-                  Next.js App Router. This is the live preview of the{" "}
-                  <span className="font-mono text-fg">about.jsx</span> template.
+                  C#/.NET developer focused on building business applications,
+                  database-driven systems, and practical solutions — currently
+                  expanding into full-stack development.
                 </TextMuted>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  <Badge>Next.js</Badge>
-                  <Badge color="bg-selection text-teal-200">React</Badge>
-                  <Badge color="bg-selection text-orange-200">Tailwind</Badge>
-                  <Badge color="bg-selection text-purple-200">Node</Badge>
+                <div className="mt-auto flex flex-wrap gap-2">
+                  <a
+                    href="mailto:jonas27samarita@gmail.com"
+                    className="rounded-sm bg-selection px-2 py-1 font-mono text-[11px] text-sky-200 hover:brightness-125"
+                  >
+                    jonas27samarita@gmail.com
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/jonas-samarita-922695247/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-sm bg-selection px-2 py-1 font-mono text-[11px] text-sky-200 hover:brightness-125"
+                  >
+                    linkedin
+                  </a>
                 </div>
               </div>
-            </div>
 
-            <div className="my-8 h-px bg-chrome-strong" />
-
-            {/* C# Developer */}
-            <section>
-              <div className="flex flex-wrap items-center gap-3">
-                <PanelTitle className="mb-0!">C# Developer</PanelTitle>
-                <Badge color="bg-selection text-teal-200">
-                  December 2023 – Present
-                </Badge>
+              {/* Top skills */}
+              <div className="rounded-md border border-chrome-strong bg-editor p-5 md:col-span-1 md:row-span-2">
+                <span className="text-[11px] font-medium uppercase tracking-widest text-fg-muted">
+                  Top Skills
+                </span>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <Badge>GitHub</Badge>
+                  <Badge color="bg-selection text-teal-200">Next.js</Badge>
+                  <Badge color="bg-selection text-purple-200">Node.js</Badge>
+                </div>
               </div>
-              <TextMuted className="mt-3">
-                I develop and maintain business applications, focusing on
-                automation, system improvements, database-driven solutions, and
-                application performance.
-              </TextMuted>
-            </section>
 
-            {/* Career Progress */}
-            <section className="mt-9">
-              <PanelTitle>Career Progress</PanelTitle>
-              <div className="space-y-6">
-                {[
-                  {
-                    year: "2023",
-                    title: "Foundation",
-                    points: [
-                      "Started as a C#/.NET developer.",
-                      "Worked with WinForms and SQL Server.",
-                      "Learned existing systems, business processes, and database structures.",
-                    ],
-                  },
-                  {
-                    year: "2024",
-                    title: "Application Development",
-                    points: [
-                      "Developed new features and business applications.",
-                      "Expanded skills in C#, Dapper, T-SQL, and database development.",
-                      "Started using Git and ClickOnce deployment.",
-                    ],
-                  },
-                  {
-                    year: "2025",
-                    title: "Advanced Development",
-                    points: [
-                      "Focused on application architecture, performance, and security.",
-                      "Improved SQL queries and large-data processing.",
-                      "Applied async programming and reusable components.",
-                    ],
-                  },
-                  {
-                    year: "2026",
-                    title: "Full-Stack Development",
-                    points: [
-                      "Expanded into modern web development.",
-                      "Working with Next.js, React, TypeScript, Tailwind CSS, and Supabase.",
-                      "Developing full-stack applications with authentication, authorization, and cloud deployment.",
-                    ],
-                  },
-                ].map((e) => (
-                  <div
-                    key={e.year}
-                    className="relative border-l border-chrome-strong pl-5"
-                  >
-                    <span className="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-sky-400 bg-editor" />
-                    <div className="flex flex-wrap items-baseline gap-x-2">
-                      <span className="font-mono text-sm font-semibold text-sky-300">
-                        {e.year}
-                      </span>
-                      <span className="text-sm font-semibold text-fg">
-                        — {e.title}
-                      </span>
-                    </div>
-                    <ul className="mt-2 space-y-1.5">
-                      {e.points.map((p) => (
+              {/* Experience */}
+              {EXPERIENCE.map((job) => (
+                <div
+                  key={`${job.company}-${job.role}`}
+                  className="rounded-md border border-chrome-strong bg-editor p-4 md:col-span-1"
+                >
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <span className="text-[13px] font-semibold text-fg">
+                      {job.role}
+                    </span>
+                    {job.current ? (
+                      <Badge color="bg-selection text-teal-200">Current</Badge>
+                    ) : null}
+                  </div>
+                  <div className="mt-1 font-mono text-[12px] text-sky-300">
+                    {job.company}
+                  </div>
+                  <div className="mt-0.5 font-mono text-[10px] text-fg-dim">
+                    {job.period}
+                  </div>
+                  {job.points.length > 0 ? (
+                    <ul className="mt-2 space-y-1">
+                      {job.points.map((p) => (
                         <li
                           key={p}
-                          className="flex gap-2 text-[13px] leading-5 text-fg-muted"
+                          className="flex gap-2 text-[12px] leading-4 text-fg-muted"
                         >
-                          <span className="mt-[9px] h-1 w-1 shrink-0 rounded-full bg-fg-dim" />
+                          <span className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-fg-dim" />
                           {p}
                         </li>
                       ))}
                     </ul>
-                  </div>
-                ))}
-              </div>
-            </section>
+                  ) : null}
+                </div>
+              ))}
 
-            {/* Current Skills */}
-            <section className="mt-9">
-              <PanelTitle>Current Skills</PanelTitle>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  "C#",
-                  ".NET",
-                  "WinForms",
-                  "SQL Server",
-                  "Dapper",
-                  "T-SQL",
-                  "Next.js",
-                  "React",
-                  "TypeScript",
-                  "Tailwind CSS",
-                  "Supabase",
-                  "Git",
-                  "GitHub",
-                  "Vercel",
-                ].map((s, i) => (
-                  <Badge
-                    key={s}
-                    color={
-                      i % 2 === 0
-                        ? "bg-selection text-sky-200"
-                        : "bg-selection text-teal-200"
-                    }
-                  >
-                    {s}
-                  </Badge>
-                ))}
+              {/* Education */}
+              <div className="rounded-md border border-chrome-strong bg-editor p-4 md:col-span-1">
+                <span className="text-[11px] font-medium uppercase tracking-widest text-fg-muted">
+                  Education
+                </span>
+                <div className="mt-2 text-[13px] font-semibold text-fg">
+                  Kolehiyo ng Subic
+                </div>
+                <div className="text-[11px] text-fg-dim">
+                  BS in Computer Science
+                </div>
+                <div className="text-[11px] text-fg-dim">
+                  March 2017 – April 2020
+                </div>
               </div>
-            </section>
+            </div>
           </div>
         </>
       }
     >
       <Line n={1}>
-        {kw("export const")} {va("profile")} {pn("=")} {"{"}
+        {kw("export const")} {va("experience")} {pn("=")} {"["}
       </Line>
       <Line n={2}>
-        {"  "}{va("name")}{pn(":")} {str('"Jonas"')}{pn(",")}
+        {"  "}{pn("{")} {va("role")}{pn(":")} {str('"System Developer/Programmer"')}{pn(",")}
       </Line>
       <Line n={3}>
-        {"  "}{va("role")}{pn(":")} {str('"Full-stack Developer"')}{pn(",")}
+        {"  "}{va("company")}{pn(":")} {str('"Sanyo Denki Philippines, Inc."')}{pn(",")}
       </Line>
       <Line n={4}>
-        {"  "}{va("location")}{pn(":")} {str('"Philippines, PH"')}{pn(",")}
+        {"  "}{va("start")}{pn(":")} {str('"December 2023"')}{pn(",")}
       </Line>
       <Line n={5}>
-        {"  "}{va("stack")}{pn(":")} {"["}{str('"Next.js"')}{pn(", ")}{str('"React"')}{pn(", ")}{str('"Tailwind"')}{pn(", ")}{str('"Node"')}{pn("]")}{pn(",")}
+        {"  "}{va("current")}{pn(":")} {kw("true")}{pn(",")}
       </Line>
       <Line n={6}>
-        {pn("}")}
+        {"  "}{pn("}")}{pn(",")}
       </Line>
-      <Line n={7} />
+      <Line n={7}>
+        {"  "}{pn("{")} {va("role")}{pn(":")} {str('"Data Entry Operator"')}{pn(",")}
+      </Line>
       <Line n={8}>
-        {kw("export default function")} {fn("About")}{pn("()")} {"{"}
+        {"  "}{va("company")}{pn(":")} {str('"Exela Technologies"')}{pn(",")}
       </Line>
       <Line n={9}>
-        {"  "}{kw("return")} {pn("(")}
+        {"  "}{pn("}")}
       </Line>
       <Line n={10}>
-        {"    "}{pn("<")}{va("section")} {va("className")}={str('"p-8"')}{pn(">")}
+        {pn("]")}
       </Line>
-      <Line n={11}>
-        {"      "}{pn("<")}{va("h1")}{pn(">")}{pn("{")}{va("profile")}{pn(".")}{va("name")}{pn("}")}{pn("</")}{va("h1")}{pn(">")}
-      </Line>
+      <Line n={11} />
       <Line n={12}>
-        {"      "}{pn("<")}{va("p")}{pn(">")}{pn("{")}{va("profile")}{pn(".")}{va("role")}{pn("}")}{pn("</")}{va("p")}{pn(">")}
+        {cm("// Job history — from LinkedIn profile.")}
       </Line>
       <Line n={13}>
-        {"      "}{pn("<")}{va("ul")}{pn(">")}
+        {kw("export default function")} {fn("About")}{pn("()")} {"{"}
       </Line>
       <Line n={14}>
-        {"        "}{pn("{")}{va("profile")}{pn(".")}{va("stack")}{pn(".")}{fn("map")}{pn("(")}{pn("(")}{va("s")}{pn(")")} {kw("=>")} {pn("(")}
+        {"  "}{kw("return")} {pn("(")}
       </Line>
       <Line n={15}>
-        {"          "}{pn("<")}{va("li")} {va("key")}={pn("{")}{va("s")}{pn("}")}{pn(">")}{pn("{")}{va("s")}{pn("}")}{pn("</")}{va("li")}{pn(">")}
+        {"    "}{pn("{")}{va("experience")}{pn(".")}{fn("map")}{pn("(")}{pn("(")}{va("job")}{pn(")")} {kw("=>")} {pn("(")}
       </Line>
       <Line n={16}>
-        {"        "}{pn(")")}{pn(")")}
+        {"      "}{pn("<")}{va("article")} {va("key")}={pn("{")}{va("job")}{pn(".")}{va("role")}{pn("}")}{pn(">")}
       </Line>
       <Line n={17}>
-        {"      "}{pn("</")}{va("ul")}{pn(">")}
+        {"        "}{pn("<")}{va("h2")}{pn(">")}{pn("{")}{va("job")}{pn(".")}{va("role")}{pn("}")}{pn("</")}{va("h2")}{pn(">")}
       </Line>
       <Line n={18}>
-        {"    "}{pn("</")}{va("section")}{pn(">")}
+        {"        "}{pn("<")}{va("p")}{pn(">")}{pn("{")}{va("job")}{pn(".")}{va("company")}{pn("}")}{pn("</")}{va("p")}{pn(">")}
       </Line>
       <Line n={19}>
+        {"      "}{pn("</")}{va("article")}{pn(">")}
+      </Line>
+      <Line n={20}>
+        {"    "}{pn(")")}{pn(")")}
+      </Line>
+      <Line n={21}>
         {"  "}{pn(")")}
       </Line>
-      <Line n={20}>{pn("}")}</Line>
+      <Line n={22}>{pn("}")}</Line>
     </EditorFile>
   );
 }
