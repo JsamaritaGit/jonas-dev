@@ -68,7 +68,7 @@ const TREE = [
         children: [
           { type: "file", name: "jonas27samarita@gmail.com", href: null, accent: "text-orange-300" },
           { type: "file", name: "LinkedIn — Jonas Samarita", href: null, accent: "text-orange-300" },
-          { type: "file", name: "Subic, Central Luzon, Philippines", href: null, accent: "text-orange-300" },
+          { type: "file", name: "Facebook — Jonas Samarita", href: null, accent: "text-orange-300" },
         ],
       },
     ],

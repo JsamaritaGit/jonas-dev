@@ -111,15 +111,13 @@ export default function Home() {
                           Full-stack Developer
                         </div>
                         <div className="font-mono text-[11px] text-fg-dim">
-                          Subic, Philippines
+                          Castillejos Zambales, Philippines, 09054239012
                         </div>
                       </div>
                     </div>
                     <TextMuted>
-                      Full-stack developer building fast, minimal tools with the
-                      Next.js App Router — from C#/.NET business applications to
-                      modern full-stack web development, now transitioning into
-                      teaching at Kolehiyo ng Subic.
+                      Experienced C#/.NET developer with a strong foundation in WinForms and SQL Server. Skilled in building business applications, optimizing database performance, and implementing modern web technologies. Passionate about continuous learning and contributing to innovative projects.
+                      
                     </TextMuted>
                     <div className="mt-auto flex flex-wrap gap-2">
                       <a
@@ -136,6 +134,10 @@ export default function Home() {
                       >
                         linkedin
                       </a>
+                      <a href="https://www.facebook.com/jonas.samarita/" target="_blank" rel="noreferrer" className="rounded-sm bg-selection px-2 py-1 font-mono text-[11px] text-sky-200 hover:brightness-125">
+                        facebook
+                      </a>
+                      
                     </div>
                   </div>
 

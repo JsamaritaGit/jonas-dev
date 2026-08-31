@@ -1,12 +1,6 @@
 import { EditorFile } from "@/components/vscode/editor";
 import {
-  Line,
-  kw,
-  fn,
-  str,
-  cm,
-  va,
-  pn,
+  Line, kw, fn, str,cm, va, pn,
 } from "@/components/vscode/syntax";
 import { Badge, PanelTitle, TextMuted } from "@/components/vscode/ui";
 import profilePic from "@/app/resources/jonas-profile-pic.jpg";
@@ -19,6 +13,8 @@ const EXPERIENCE = [
     location: "Subic, Philippines",
     current: true,
     points: [
+      "Part time work as an Instructor.",
+      "Adviser — Junior Philippine Computer Society - Kolehiyo ng Subic Chapter (JPCS-KNS)",
       "Transitioning into teaching in the Computer Science Department.",
     ],
   },
@@ -28,7 +24,11 @@ const EXPERIENCE = [
     period: "December 2023 – September 2026",
     location: "Subic Bay Freeport Zone, Philippines",
     current: false,
-    points: ["Managed software development & maintenance."],
+    points: ["Managed software development & maintenance.",
+      "Developed business applications using C#, .NET, WinForms, SQL Server, Dapper, and T-SQL.",
+      "Improved application performance, security, and architecture.",
+      "Implemented async programming and reusable components.",
+    ],
   },
   {
     role: "Data Entry Operator",
@@ -95,6 +95,11 @@ export default function About() {
                   business application experience to the Computer Science
                   Department at Kolehiyo ng Subic.
                 </TextMuted>
+
+                <TextMuted>
+                  2026 – Present: Part-time Instructor at Kolehiyo ng Subic — Computer Science Department. Adviser for the Junior Philippine Computer Society - Kolehiyo ng Subic Chapter (JPCS-KNS).
+
+                </TextMuted>
                 <div className="mt-auto flex flex-wrap gap-2">
                   <a
                     href="mailto:jonas27samarita@gmail.com"
@@ -119,9 +124,24 @@ export default function About() {
                   Top Skills
                 </span>
                 <div className="mt-3 flex flex-wrap gap-2">
+                  <Badge>C#</Badge>
+                  <Badge color="bg-selection text-teal-200">SQL Server</Badge>
+                  <Badge color="bg-selection text-purple-200">.NET</Badge>
+                  <Badge color="bg-selection text-sky-200">WinForms</Badge>
+                  <Badge color="bg-selection text-teal-200">Dapper</Badge>
+                  <Badge color="bg-selection text-purple-200">T-SQL</Badge>
                   <Badge>GitHub</Badge>
                   <Badge color="bg-selection text-teal-200">Next.js</Badge>
                   <Badge color="bg-selection text-purple-200">Node.js</Badge>
+                </div>
+
+                <span className="mt-4 block text-[11px] font-medium uppercase tracking-widest text-fg-muted">
+                  Other Skills
+                </span>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <Badge color="bg-selection text-sky-200">Photoshop</Badge>
+                  <Badge color="bg-selection text-teal-200">Adobe Illustrator</Badge>
+                  
                 </div>
               </div>
 
