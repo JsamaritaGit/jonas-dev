@@ -1,8 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #1e1e1e;
+  --foreground: #cccccc;
+
+  /* VS Code "Dark+" palette */
+  --vscode-editor: #1e1e1e;
+  --vscode-editor-soft: #252526;
+  --vscode-activity-bar: #333333;
+  --vscode-title-bar: #323233;
+  --vscode-tab-inactive: #2d2d2d;
+  --vscode-border: #3c3c3c;
+  --vscode-border-strong: #454545;
+  --vscode-status-bar: #007acc;
+  --vscode-selection: #264f78;
+  --vscode-hover: #2a2d2e;
+  --vscode-fg: #cccccc;
+  --vscode-fg-muted: #9d9d9d;
+  --vscode-fg-dim: #6e6e6e;
 }
 
 @theme inline {
@@ -10,17 +25,51 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-editor: var(--vscode-editor);
+  --color-editor-soft: var(--vscode-editor-soft);
+  --color-activity-bar: var(--vscode-activity-bar);
+  --color-title-bar: var(--vscode-title-bar);
+  --color-tab-inactive: var(--vscode-tab-inactive);
+  --color-chrome: var(--vscode-border);
+  --color-chrome-strong: var(--vscode-border-strong);
+  --color-status-bar: var(--vscode-status-bar);
+  --color-selection: var(--vscode-selection);
+  --color-hover: var(--vscode-hover);
+  --color-fg: var(--vscode-fg);
+  --color-fg-muted: var(--vscode-fg-muted);
+  --color-fg-dim: var(--vscode-fg-dim);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  height: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* VS Code-style thin scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #424242 transparent;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: #424242;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-corner {
+  background: transparent;
 }
