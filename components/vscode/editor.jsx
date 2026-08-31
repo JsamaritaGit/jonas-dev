@@ -47,22 +47,28 @@ export function EditorFile({ filename, language, children, previewLabel, preview
       className="flex h-full min-h-0 flex-col font-mono text-[13px] leading-6"
     >
       {/* Breadcrumb bar (like VS Code) */}
-      <div className="flex shrink-0 items-center gap-1 border-b border-chrome bg-editor px-4 py-1.5 text-xs text-fg-muted">
-        <span className="cursor-pointer hover:text-fg">jonas-dev</span>
-        <ChevronRightIcon className="h-3 w-3 text-fg-dim" />
-        <span className="cursor-pointer hover:text-fg">app</span>
-        <ChevronRightIcon className="h-3 w-3 text-fg-dim" />
-        <span className="cursor-pointer hover:text-fg">pages</span>
-        <ChevronRightIcon className="h-3 w-3 text-fg-dim" />
-        <span className="text-fg">{filename}</span>
-        <span className="ml-2 rounded-sm bg-selection px-1.5 py-0.5 text-[10px] text-sky-200">
+      <div className="flex min-w-0 shrink-0 items-center gap-1 overflow-x-auto border-b border-chrome bg-editor px-3 py-1.5 text-xs text-fg-muted md:px-4">
+        <span className="cursor-pointer whitespace-nowrap hover:text-fg">
+          jonas-dev
+        </span>
+        <ChevronRightIcon className="h-3 w-3 shrink-0 text-fg-dim" />
+        <span className="hidden cursor-pointer whitespace-nowrap hover:text-fg md:inline">
+          app
+        </span>
+        <ChevronRightIcon className="hidden h-3 w-3 shrink-0 text-fg-dim md:inline" />
+        <span className="hidden cursor-pointer whitespace-nowrap hover:text-fg md:inline">
+          pages
+        </span>
+        <ChevronRightIcon className="hidden h-3 w-3 shrink-0 text-fg-dim md:inline" />
+        <span className="whitespace-nowrap text-fg">{filename}</span>
+        <span className="ml-2 hidden shrink-0 rounded-sm bg-selection px-1.5 py-0.5 text-[10px] text-sky-200 sm:inline">
           {language}
         </span>
         <div className="flex-1" />
         <button
           title="Reset split to 50 / 50"
           onClick={() => setPreviewPct(50)}
-          className="rounded-sm p-0.5 text-fg-dim hover:bg-hover hover:text-fg"
+          className="shrink-0 rounded-sm p-0.5 text-fg-dim hover:bg-hover hover:text-fg"
         >
           <SplitIcon className="h-3.5 w-3.5" />
         </button>
@@ -112,7 +118,7 @@ export function Preview({ label, children }) {
           Preview
         </span>
       </div>
-      <div className="min-h-0 flex-1 overflow-y-auto p-5 font-sans">
+      <div className="min-h-0 flex-1 overflow-y-auto p-4 font-sans md:p-5">
         {children}
       </div>
     </section>

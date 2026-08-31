@@ -85,7 +85,7 @@ export default function Home() {
       previewLabel="Profile"
       preview={
         <>
-          <div className="relative -m-5 flex min-h-[calc(100%+2.5rem)] flex-col overflow-hidden">
+          <div className="relative -m-4 flex min-h-[calc(100%+2rem)] flex-col overflow-hidden md:-m-5 md:min-h-[calc(100%+2.5rem)]">
             {/* Blurred profile photo background
             <div
               aria-hidden

@@ -282,7 +282,7 @@ export default function SidePanel() {
   };
 
   return (
-    <div className="flex shrink-0">
+    <div className="hidden shrink-0 md:flex">
       {/* Activity bar */}
       <aside className="flex w-12 flex-col items-center bg-activity-bar py-1 text-fg-muted">
         {VIEWS.map((v) => {
