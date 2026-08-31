@@ -13,12 +13,22 @@ import profilePic from "@/app/resources/jonas-profile-pic.jpg";
 
 const EXPERIENCE = [
   {
+    role: "Instructor",
+    company: "Kolehiyo ng Subic — Computer Science Department",
+    period: "September 2026 – Present",
+    location: "Subic, Philippines",
+    current: true,
+    points: [
+      "Transitioning into teaching in the Computer Science Department.",
+    ],
+  },
+  {
     role: "System Developer/Programmer",
     company: "Sanyo Denki Philippines, Inc.",
-    period: "December 2023 – Present",
+    period: "December 2023 – September 2026",
     location: "Subic Bay Freeport Zone, Philippines",
-    current: true,
-    points: ["Manages software development & maintenance."],
+    current: false,
+    points: ["Managed software development & maintenance."],
   },
   {
     role: "Data Entry Operator",
@@ -74,16 +84,16 @@ export default function About() {
                     Jonas Samarita
                   </div>
                   <div className="mt-0.5 font-mono text-[13px] text-sky-300">
-                    Software Developer/Programmer
+                    Instructor, Computer Science Department
                   </div>
                   <div className="mt-0.5 font-mono text-[11px] text-fg-dim">
-                    Subic, Central Luzon, Philippines
+                    Kolehiyo ng Subic · Subic, Central Luzon, Philippines
                   </div>
                 </div>
                 <TextMuted>
-                  C#/.NET developer focused on building business applications,
-                  database-driven systems, and practical solutions — currently
-                  expanding into full-stack development.
+                  C#/.NET developer transitioning into teaching — bringing
+                  business application experience to the Computer Science
+                  Department at Kolehiyo ng Subic.
                 </TextMuted>
                 <div className="mt-auto flex flex-wrap gap-2">
                   <a
@@ -152,7 +162,7 @@ export default function About() {
               ))}
 
               {/* Education */}
-              <div className="rounded-md border border-chrome-strong bg-editor p-4 md:col-span-1">
+              <div className="rounded-md border border-chrome-strong bg-editor p-4 md:col-span-3">
                 <span className="text-[11px] font-medium uppercase tracking-widest text-fg-muted">
                   Education
                 </span>

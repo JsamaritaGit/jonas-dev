@@ -55,6 +55,7 @@ const TIMELINE = [
       "Expanded into modern web development.",
       "Working with Next.js, React, TypeScript, Tailwind CSS, and Supabase.",
       "Developing full-stack applications with authentication, authorization, and cloud deployment.",
+      "Transitioning into an instructor role at Kolehiyo ng Subic — Computer Science Department.",
     ],
   },
 ];
@@ -117,7 +118,8 @@ export default function Home() {
                     <TextMuted>
                       Full-stack developer building fast, minimal tools with the
                       Next.js App Router — from C#/.NET business applications to
-                      modern full-stack web development.
+                      modern full-stack web development, now transitioning into
+                      teaching at Kolehiyo ng Subic.
                     </TextMuted>
                     <div className="mt-auto flex flex-wrap gap-2">
                       <a
@@ -160,7 +162,7 @@ export default function Home() {
                   <div className="rounded-md border border-chrome-strong bg-editor p-4 md:col-span-1">
                     <PanelTitle className="mb-0!">C# Developer</PanelTitle>
                     <div className="mt-1 font-mono text-[11px] text-fg-dim">
-                      December 2023 – Present
+                      December 2023 – September 2026
                     </div>
                     <TextMuted className="mt-2">
                       Business applications — automation, system improvements,
