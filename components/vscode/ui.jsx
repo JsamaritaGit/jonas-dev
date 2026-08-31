@@ -27,12 +27,12 @@ export function Badge({ children, color = "bg-selection text-sky-200" }) {
   );
 }
 
-export function PanelTitle({ children }) {
+export function PanelTitle({ children, className = "" }) {
   return (
-    <h2 className="mb-3 font-semibold text-fg">{children}</h2>
+    <h2 className={`mb-3 font-semibold text-fg ${className}`}>{children}</h2>
   );
 }
 
-export function TextMuted({ children }) {
-  return <p className="text-sm leading-6 text-fg-muted">{children}</p>;
+export function TextMuted({ children, className = "" }) {
+  return <p className={`text-sm leading-6 text-fg-muted ${className}`}>{children}</p>;
 }

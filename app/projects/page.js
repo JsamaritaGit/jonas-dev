@@ -1,7 +1,6 @@
+import { EditorFile } from "@/components/vscode/editor";
 import {
-  EditorFile,
   Line,
-  Preview,
   kw,
   fn,
   str,
@@ -9,12 +8,49 @@ import {
   va,
   num,
   pn,
-} from "@/components/vscode/editor";
+} from "@/components/vscode/syntax";
 import { Badge, PanelTitle } from "@/components/vscode/ui";
 
 export default function Projects() {
   return (
-    <EditorFile filename="projects.jsx" language="JavaScript JSX">
+    <EditorFile
+      filename="projects.jsx"
+      language="JavaScript JSX"
+      previewLabel="Projects"
+      preview={
+        <>
+          <div className="flex items-center justify-between">
+            <PanelTitle>Projects</PanelTitle>
+            <Badge color="bg-selection text-purple-200">3 repositories</Badge>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-3">
+            {[
+              { name: "vscode-ui", desc: "VS Code–styled app shell for this site.", stars: "128", color: "text-orange-300" },
+              { name: "cli-tools", desc: "Developer productivity CLI written in Node.", stars: "64", color: "text-teal-300" },
+              { name: "design-system", desc: "Shared React components and tokens.", stars: "32", color: "text-purple-300" },
+            ].map((p) => (
+              <div
+                key={p.name}
+                className="rounded-md border border-chrome-strong bg-editor p-4"
+              >
+                <div className={`font-mono text-sm font-semibold ${p.color}`}>
+                  {p.name}
+                </div>
+                <p className="mt-2 text-[13px] leading-5 text-fg-muted">{p.desc}</p>
+                <div className="mt-3 flex items-center justify-between">
+                  <span className="font-mono text-[11px] text-fg-dim">
+                    ★ {p.stars}
+                  </span>
+                  <span className="cursor-pointer rounded-sm bg-selection px-2 py-1 text-[11px] text-sky-200 hover:brightness-125">
+                    Open
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
+      }
+    >
       <Line n={1}>
         {kw("const")} {va("projects")} {pn("=")} {"["}
       </Line>
@@ -71,38 +107,6 @@ export default function Projects() {
         {"  "}{pn(")")}
       </Line>
       <Line n={20}>{pn("}")}</Line>
-
-      <Preview label="Projects">
-        <div className="flex items-center justify-between">
-          <PanelTitle>Projects</PanelTitle>
-          <Badge color="bg-selection text-purple-200">3 repositories</Badge>
-        </div>
-        <div className="grid gap-3 sm:grid-cols-3">
-          {[
-            { name: "vscode-ui", desc: "VS Code–styled app shell for this site.", stars: "128", color: "text-orange-300" },
-            { name: "cli-tools", desc: "Developer productivity CLI written in Node.", stars: "64", color: "text-teal-300" },
-            { name: "design-system", desc: "Shared React components and tokens.", stars: "32", color: "text-purple-300" },
-          ].map((p) => (
-            <div
-              key={p.name}
-              className="rounded-md border border-chrome-strong bg-editor p-4"
-            >
-              <div className={`font-mono text-sm font-semibold ${p.color}`}>
-                {p.name}
-              </div>
-              <p className="mt-2 text-[13px] leading-5 text-fg-muted">{p.desc}</p>
-              <div className="mt-3 flex items-center justify-between">
-                <span className="font-mono text-[11px] text-fg-dim">
-                  ★ {p.stars}
-                </span>
-                <span className="cursor-pointer rounded-sm bg-selection px-2 py-1 text-[11px] text-sky-200 hover:brightness-125">
-                  Open
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Preview>
     </EditorFile>
   );
 }

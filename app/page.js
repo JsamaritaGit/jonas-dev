@@ -1,19 +1,38 @@
+import { EditorFile } from "@/components/vscode/editor";
 import {
-  EditorFile,
   Line,
-  Preview,
   kw,
   fn,
   str,
   cm,
   va,
   pn,
-} from "@/components/vscode/editor";
+} from "@/components/vscode/syntax";
 import { StatCard, PanelTitle, TextMuted } from "@/components/vscode/ui";
 
 export default function Home() {
   return (
-    <EditorFile filename="home.jsx" language="JavaScript JSX">
+    <EditorFile
+      filename="home.jsx"
+      language="JavaScript JSX"
+      previewLabel="Dashboard"
+      preview={
+        <>
+          <PanelTitle>Dashboard</PanelTitle>
+          <TextMuted>
+            This is the live preview of the{" "}
+            <span className="font-mono text-fg">home.jsx</span> template. Edit
+            the code above and this pane reflects your changes.
+          </TextMuted>
+          <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <StatCard label="Total tabs" value="3" hint="3 open tabs" />
+            <StatCard label="Active" value="2" hint="in progress" />
+            <StatCard label="Deployed" value="14" hint="this quarter" />
+            <StatCard label="Uptime" value="99.9%" hint="last 30 days" />
+          </div>
+        </>
+      }
+    >
       <Line n={1}>
         {kw("import")} {"{ "}{va("StatCard")}{" }"} {kw("from")} {str("'../components/stat-card'")}
       </Line>
@@ -63,21 +82,6 @@ export default function Home() {
         {"  "}{pn(")")}
       </Line>
       <Line n={19}>{pn("}")}</Line>
-
-      <Preview label="Dashboard">
-        <PanelTitle>Dashboard</PanelTitle>
-        <TextMuted>
-          This is the live preview of the{" "}
-          <span className="font-mono text-fg">home.jsx</span> template. Edit the
-          code above and this pane reflects your changes.
-        </TextMuted>
-        <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
-          <StatCard label="Total tabs" value="3" hint="3 open tabs" />
-          <StatCard label="Active" value="2" hint="in progress" />
-          <StatCard label="Deployed" value="14" hint="this quarter" />
-          <StatCard label="Uptime" value="99.9%" hint="last 30 days" />
-        </div>
-      </Preview>
     </EditorFile>
   );
 }

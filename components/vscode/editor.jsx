@@ -1,50 +1,52 @@
-// Primitives used by every tab page to render itself as an "open file" in
-// the VS Code editor area: a breadcrumb bar, line-numbered code with
-// syntax highlighting, and an optional live PREVIEW pane below.
+"use client";
 
+// The VS Code-like editor area: a breadcrumb bar on top, then a resizable
+// split with the live PREVIEW as the main/center pane and the line-numbered
+// code pane below it. Drag the divider between the panes to resize both.
+
+import { useRef, useState } from "react";
 import { ChevronRightIcon, SplitIcon } from "./icons";
 
-// --- Syntax highlighting helpers -----------------------------------------
-export const kw = (children) => (
-  <span className="text-[#c586c0]">{children}</span>
-);
-export const fn = (children) => (
-  <span className="text-[#dcdcaa]">{children}</span>
-);
-export const str = (children) => (
-  <span className="text-[#ce9178]">{children}</span>
-);
-export const cm = (children) => (
-  <span className="italic text-[#6a9955]">{children}</span>
-);
-export const ty = (children) => (
-  <span className="text-[#4ec9b0]">{children}</span>
-);
-export const num = (children) => (
-  <span className="text-[#b5cea8]">{children}</span>
-);
-export const va = (children) => (
-  <span className="text-[#9cdcfe]">{children}</span>
-);
-export const pn = (children) => <span>{children}</span>;
-
-// --- A single line of code with a gutter line number ----------------------
-export function Line({ n, children }) {
-  return (
-    <div className="flex items-start px-2 hover:bg-selection/40">
-      <span className="w-10 shrink-0 select-none pr-4 text-right text-fg-dim">
-        {n}
-      </span>
-      <span className="whitespace-pre pr-6">{children}</span>
-    </div>
-  );
-}
-
 // --- The "open editor document" wrapper -----------------------------------
-// Breadcrumb bar on top (like VS Code), then the scrollable code body.
-export function EditorFile({ filename, language, children }) {
+// Breadcrumb bar on top, then the live PREVIEW as the main/center pane with
+// the line-numbered code pane below it. Drag the divider to resize both.
+// `children` are the code lines; `previewLabel` / `preview` are passed as
+// explicit props so the client component never has to guess which child is
+// the preview (element type identity is not preserved across the RSC
+// server -> client children boundary).
+export function EditorFile({ filename, language, children, previewLabel, preview }) {
+  // Percentage of the container height given to the preview (main) pane.
+  const [previewPct, setPreviewPct] = useState(65);
+  const containerRef = useRef(null);
+  const dragging = useRef(false);
+
+  const onDividerPointerDown = (e) => {
+    dragging.current = true;
+    e.preventDefault();
+    e.currentTarget.setPointerCapture(e.pointerId);
+  };
+
+  const onDividerPointerMove = (e) => {
+    if (!dragging.current || !containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    if (!rect.height) return;
+    const pct = ((e.clientY - rect.top) / rect.height) * 100;
+    setPreviewPct(Math.min(85, Math.max(15, pct)));
+  };
+
+  const onDividerPointerUp = (e) => {
+    dragging.current = false;
+    if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    }
+  };
+
   return (
-    <div className="flex min-h-full flex-col font-mono text-[13px] leading-6">
+    <div
+      ref={containerRef}
+      className="flex h-full min-h-0 flex-col font-mono text-[13px] leading-6"
+    >
+      {/* Breadcrumb bar (like VS Code) */}
       <div className="flex shrink-0 items-center gap-1 border-b border-chrome bg-editor px-4 py-1.5 text-xs text-fg-muted">
         <span className="cursor-pointer hover:text-fg">jonas-dev</span>
         <ChevronRightIcon className="h-3 w-3 text-fg-dim" />
@@ -57,24 +59,62 @@ export function EditorFile({ filename, language, children }) {
           {language}
         </span>
         <div className="flex-1" />
-        <SplitIcon className="h-3.5 w-3.5 cursor-pointer text-fg-dim hover:text-fg" />
+        <button
+          title="Reset split to 50 / 50"
+          onClick={() => setPreviewPct(50)}
+          className="rounded-sm p-0.5 text-fg-dim hover:bg-hover hover:text-fg"
+        >
+          <SplitIcon className="h-3.5 w-3.5" />
+        </button>
       </div>
-      <div className="flex-1 overflow-auto py-2">{children}</div>
+
+      {/* Preview pane — the main window */}
+      <div
+        style={{ flexBasis: `${previewPct}%` }}
+        className="min-h-0 shrink-0 overflow-hidden"
+      >
+        <Preview label={previewLabel}>{preview}</Preview>
+      </div>
+
+      {/* Draggable divider between preview and editor */}
+      <div
+        role="separator"
+        aria-orientation="horizontal"
+        aria-valuenow={Math.round(previewPct)}
+        aria-valuemin={15}
+        aria-valuemax={85}
+        aria-label="Resize preview and editor"
+        title="Drag to resize preview and editor"
+        onPointerDown={onDividerPointerDown}
+        onPointerMove={onDividerPointerMove}
+        onPointerUp={onDividerPointerUp}
+        onPointerCancel={onDividerPointerUp}
+        className="group relative z-10 -my-1 flex h-2 shrink-0 cursor-row-resize touch-none select-none items-center justify-center"
+      >
+        <div className="h-px w-full bg-chrome-strong transition-colors group-hover:bg-sky-400 group-active:bg-sky-400" />
+      </div>
+
+      {/* Editor code pane (bottom, resizable) */}
+      <div className="min-h-0 flex-1 overflow-y-auto bg-editor">
+        <div className="py-2">{children}</div>
+      </div>
     </div>
   );
 }
 
-// --- A labeled pane below the code, rendering the template live -----------
+// --- The labeled live preview pane ----------------------------------------
 export function Preview({ label, children }) {
   return (
-    <section className="mt-4 border-t border-chrome-strong">
-      <div className="flex items-center justify-between bg-editor-soft px-4 py-1.5 text-[10px] font-medium uppercase tracking-widest text-fg-muted">
+    <section className="flex h-full min-h-0 flex-col">
+      <div className="flex shrink-0 items-center justify-between border-b border-chrome-strong bg-editor-soft px-4 py-1.5 text-[10px] font-medium uppercase tracking-widest text-fg-muted">
         <span>{label}</span>
         <span className="rounded-sm bg-selection px-1.5 py-0.5 text-[9px] text-sky-200">
           Preview
         </span>
       </div>
-      <div className="p-5 font-sans">{children}</div>
+      <div className="min-h-0 flex-1 overflow-y-auto p-5 font-sans">
+        {children}
+      </div>
     </section>
   );
 }

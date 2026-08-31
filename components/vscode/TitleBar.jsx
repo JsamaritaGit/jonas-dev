@@ -25,7 +25,7 @@ export default function TitleBar() {
           — Visual Studio Code
         </span>
       </div>
-
+{/* 
       <nav className="ml-4 hidden items-center gap-0.5 lg:flex">
         {MENU.map((m) => (
           <button
@@ -65,7 +65,7 @@ export default function TitleBar() {
         >
           <WindowCloseIcon className="h-4 w-4" />
         </button>
-      </div>
+      </div> */}
     </header>
   );
 }
