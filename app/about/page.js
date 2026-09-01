@@ -15,7 +15,6 @@ const EXPERIENCE = [
     points: [
       "Part time work as an Instructor.",
       "Adviser — Junior Philippine Computer Society - Kolehiyo ng Subic Chapter (JPCS-KNS)",
-      "Transitioning into teaching in the Computer Science Department.",
     ],
   },
   {
@@ -28,6 +27,7 @@ const EXPERIENCE = [
       "Developed business applications using C#, .NET, WinForms, SQL Server, Dapper, and T-SQL.",
       "Improved application performance, security, and architecture.",
       "Implemented async programming and reusable components.",
+      "Collaborated with cross-functional teams to deliver high-quality software solutions."
     ],
   },
   {
@@ -46,7 +46,11 @@ const EXPERIENCE = [
     company: "Merry Telecommunication Installation Services",
     period: "September 2021 – March 2023",
     location: "Philippines",
-    points: ["Monitored project progress.", "Processed billing documents."],
+    points: [
+      "Managed administrative tasks for the Company", 
+      "Processed billing documents.",
+      "Assist and track project's progress and status."
+    ],
   },
   {
     role: "Secondary Developer",
@@ -55,7 +59,8 @@ const EXPERIENCE = [
     location: "Subic, Philippines",
     points: [
       "Handled database maintenance.",
-      "Developed the school's current enrolment system.",
+      "Improved and maintained the school's current enrolment system.",
+      "Collaborated with other developers to enhance the system's functionality.",
     ],
   },
   {
@@ -63,7 +68,11 @@ const EXPERIENCE = [
     company: "Kolehiyo ng Subic",
     period: "June 2019 – July 2020",
     location: "Subic, Zambales",
-    points: [],
+    points: [
+      "Handled administrative tasks for the School registrar office.",
+      "Managed student records and enrollment data.",
+      "Assisted in the development of the school's enrolment system.",
+    ],
   },
 ];
 
@@ -78,7 +87,7 @@ export default function About() {
           <div className="mx-auto max-w-5xl">
             <div className="grid auto-rows-fr grid-cols-1 gap-4 md:grid-cols-3">
               {/* Profile hero */}
-              <div className="flex flex-col gap-4 rounded-md border border-chrome-strong bg-editor p-5 md:col-span-2 md:row-span-2">
+              <div className="flex flex-col gap-4 rounded-md border border-chrome-strong bg-editor p-5 transition-colors duration-200 hover:border-orange-400/80 md:col-span-2 ">
                 <div>
                   <div className="text-lg font-semibold text-fg">
                     Jonas Samarita
@@ -119,7 +128,7 @@ export default function About() {
               </div>
 
               {/* Top skills */}
-              <div className="rounded-md border border-chrome-strong bg-editor p-5 md:col-span-1 md:row-span-2">
+              <div className="rounded-md border border-chrome-strong bg-editor p-5 transition-colors duration-200 hover:border-orange-400/80 md:col-span-1">
                 <span className="text-[11px] font-medium uppercase tracking-widest text-fg-muted">
                   Top Skills
                 </span>
@@ -149,7 +158,7 @@ export default function About() {
               {EXPERIENCE.map((job) => (
                 <div
                   key={`${job.company}-${job.role}`}
-                  className="rounded-md border border-chrome-strong bg-editor p-4 md:col-span-1"
+                  className="rounded-md border border-chrome-strong bg-editor p-4 transition-colors duration-200 hover:border-orange-400/80 md:col-span-1"
                 >
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <span className="text-[13px] font-semibold text-fg">
@@ -182,7 +191,7 @@ export default function About() {
               ))}
 
               {/* Education */}
-              <div className="rounded-md border border-chrome-strong bg-editor p-4 md:col-span-3">
+              <div className="rounded-md border border-chrome-strong bg-editor p-4 transition-colors duration-200 hover:border-orange-400/80 md:col-span-3">
                 <span className="text-[11px] font-medium uppercase tracking-widest text-fg-muted">
                   Education
                 </span>
@@ -190,10 +199,20 @@ export default function About() {
                   Kolehiyo ng Subic
                 </div>
                 <div className="text-[11px] text-fg-dim">
-                  BS in Computer Science
+                  Bachelor of Science in Computer Science
                 </div>
                 <div className="text-[11px] text-fg-dim">
                   March 2017 – April 2020
+                </div>
+
+                <div className="mt-2 text-[13px] font-semibold text-fg">
+                  Kolehiyo ng Subic
+                </div>
+                <div className="text-[11px] text-fg-dim">
+                  Computer Hardware Technology
+                </div>
+                <div className="text-[11px] text-fg-dim">
+                  April 2014 – March 2016
                 </div>
               </div>
             </div>

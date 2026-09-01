@@ -9,6 +9,8 @@ import {
   pn,
 } from "@/components/vscode/syntax";
 import { Badge, PanelTitle, TextMuted } from "@/components/vscode/ui";
+import ZoomImage from "@/components/vscode/ZoomImage";
+import Typewriter from "@/components/vscode/Typewriter";
 import profilePic from "@/app/resources/jonas-profile-pic.jpg";
 
 const TIMELINE = [
@@ -96,12 +98,12 @@ export default function Home() {
               <div className="mx-auto max-w-5xl">
                 <div className="grid auto-rows-fr grid-cols-1 gap-4 md:grid-cols-3">
                   {/* Profile hero */}
-                  <div className="flex flex-col gap-4 rounded-md border border-chrome-strong bg-editor p-5 md:col-span-2 md:row-span-2">
+                  <div className="flex flex-col gap-4 rounded-md border border-chrome-strong bg-editor p-5 transition-colors duration-200 hover:border-orange-400/80 md:col-span-2">
                     <div className="flex items-center gap-4">
-                      <img
+                      <ZoomImage
                         src={profilePic.src}
-                        alt="Jonas"
-                        className="h-16 w-16 shrink-0 rounded-full border-2 border-chrome-strong object-cover"
+                        alt="Jonas Samarita"
+                        className="h-20 w-20 rounded-full border-2 border-chrome-strong object-cover"
                       />
                       <div>
                         <div className="text-lg font-semibold text-fg">
@@ -115,10 +117,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <TextMuted>
-                      Experienced C#/.NET developer with a strong foundation in WinForms and SQL Server. Skilled in building business applications, optimizing database performance, and implementing modern web technologies. Passionate about continuous learning and contributing to innovative projects.
-                      
-                    </TextMuted>
+                    <Typewriter text="Experienced C#/.NET developer with a strong foundation in WinForms and SQL Server. Skilled in building business applications, optimizing database performance, and implementing modern web technologies. Passionate about continuous learning and contributing to innovative projects." />
                     <div className="mt-auto flex flex-wrap gap-2">
                       <a
                         href="mailto:jonas27samarita@gmail.com"
@@ -137,12 +136,14 @@ export default function Home() {
                       <a href="https://www.facebook.com/jonas.samarita/" target="_blank" rel="noreferrer" className="rounded-sm bg-selection px-2 py-1 font-mono text-[11px] text-sky-200 hover:brightness-125">
                         facebook
                       </a>
-                      
+                      <a href="https://github.com/JsamaritaGit" target="_blank" rel="noreferrer" className="rounded-sm bg-selection px-2 py-1 font-mono text-[11px] text-sky-200 hover:brightness-125">
+                        github
+                      </a>
                     </div>
                   </div>
 
                   {/* Current Skills */}
-                  <div className="rounded-md border border-chrome-strong bg-editor p-5 md:col-span-1 md:row-span-2">
+                  <div className="rounded-md border border-chrome-strong bg-editor p-5 transition-colors duration-200 hover:border-orange-400/80 md:col-span-1 md:row-span-2">
                     <PanelTitle className="mb-0!">Current Skills</PanelTitle>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {SKILLS.map((s, i) => (
@@ -161,14 +162,16 @@ export default function Home() {
                   </div>
 
                   {/* C# Developer */}
-                  <div className="rounded-md border border-chrome-strong bg-editor p-4 md:col-span-1">
+                  <div className="rounded-md border border-chrome-strong bg-editor p-4 transition-colors duration-200 hover:border-orange-400/80 md:col-span-1">
                     <PanelTitle className="mb-0!">C# Developer</PanelTitle>
                     <div className="mt-1 font-mono text-[11px] text-fg-dim">
                       December 2023 – September 2026
                     </div>
                     <TextMuted className="mt-2">
-                      Business applications — automation, system improvements,
+
+                      Business enterprise applications — automation, system improvements,
                       database-driven solutions, and application performance.
+                      
                     </TextMuted>
                   </div>
 
@@ -176,7 +179,7 @@ export default function Home() {
                   {TIMELINE.map((e) => (
                     <div
                       key={e.year}
-                      className="rounded-md border border-chrome-strong bg-editor p-4 md:col-span-1"
+                      className="rounded-md border border-chrome-strong bg-editor p-4 transition-colors duration-200 hover:border-orange-400/80 md:col-span-1"
                     >
                       <div className="font-mono text-sm font-semibold text-sky-300">
                         {e.year}

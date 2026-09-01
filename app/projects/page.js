@@ -76,7 +76,7 @@ export default function Projects() {
             {PROJECTS.map((p) => (
               <div
                 key={p.name}
-                className={`rounded-md border p-4 ${
+                className={`rounded-md border p-4 transition-colors duration-200 hover:border-orange-400/80 ${
                   p.live
                     ? "border-sky-400/60 bg-selection/10 sm:col-span-2"
                     : "border-chrome-strong bg-editor"

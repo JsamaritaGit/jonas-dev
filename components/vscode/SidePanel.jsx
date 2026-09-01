@@ -55,7 +55,7 @@ const TREE = [
         type: "folder",
         name: "Work experiences",
         children: [
-          { type: "file", name: "Instructor — Kolehiyo ng Subic", href: null, accent: "text-teal-300" },
+          { type: "file", name: "Kolehiyo ng Subic - Instructor", href: null, accent: "text-teal-300" },
           { type: "file", name: "Sanyo Denki Philippines, Inc.", href: null, accent: "text-sky-300" },
           { type: "file", name: "Exela Technologies", href: null, accent: "text-sky-300" },
           { type: "file", name: "Merry Telecommunication", href: null, accent: "text-sky-300" },
@@ -68,7 +68,8 @@ const TREE = [
         children: [
           { type: "file", name: "jonas27samarita@gmail.com", href: null, accent: "text-orange-300" },
           { type: "file", name: "LinkedIn — Jonas Samarita", href: null, accent: "text-orange-300" },
-          { type: "file", name: "Facebook — Jonas Samarita", href: null, accent: "text-orange-300" },
+          { type: "file", name: "Facebook — Jonas Samarita", href: "https://www.facebook.com/jonas.samarita/", accent: "text-orange-300" },
+          { type: "file", name: "Github — Jonas Samarita", href: "https://github.com/JsamaritaGit", accent: "text-orange-300" },
         ],
       },
     ],

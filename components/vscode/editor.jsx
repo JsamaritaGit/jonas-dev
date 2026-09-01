@@ -14,6 +14,7 @@ import { ChevronRightIcon, SplitIcon } from "./icons";
 // explicit props so the client component never has to guess which child is
 // the preview (element type identity is not preserved across the RSC
 // server -> client children boundary).
+
 export function EditorFile({ filename, language, children, previewLabel, preview }) {
   // Percentage of the container height given to the preview (main) pane.
   const [previewPct, setPreviewPct] = useState(65);
@@ -95,7 +96,7 @@ export function EditorFile({ filename, language, children, previewLabel, preview
         onPointerMove={onDividerPointerMove}
         onPointerUp={onDividerPointerUp}
         onPointerCancel={onDividerPointerUp}
-        className="group relative z-10 -my-1 flex h-2 shrink-0 cursor-row-resize touch-none select-none items-center justify-center"
+        className="group relative z-8 -my-1 flex h-2 shrink-0 cursor-row-resize touch-none select-none items-center justify-center"
       >
         <div className="h-px w-full bg-chrome-strong transition-colors group-hover:bg-sky-400 group-active:bg-sky-400" />
       </div>
