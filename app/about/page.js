@@ -3,6 +3,7 @@ import {
   Line, kw, fn, str,cm, va, pn,
 } from "@/components/vscode/syntax";
 import { Badge, PanelTitle, TextMuted } from "@/components/vscode/ui";
+import PokemonCard from "@/components/pokemon/PokemonCard";
 import profilePic from "@/app/resources/jonas-profile-pic.jpg";
 
 const EXPERIENCE = [
@@ -217,6 +218,8 @@ export default function About() {
               </div>
             </div>
           </div>
+
+  
         </>
       }
     >

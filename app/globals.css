@@ -73,3 +73,65 @@ body {
 *::-webkit-scrollbar-corner {
   background: transparent;
 }
+
+/* --- Modal / overlay animations (used by Pokemon details modal) ---------- */
+@keyframes copilot-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes copilot-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: copilot-fade-in 160ms ease-out both;
+}
+
+.animate-panel-in {
+  animation: copilot-panel-in 240ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* --- Floating Pokémon sprite ------------------------------------------- */
+@keyframes copilot-pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-12deg);
+  }
+  70% {
+    transform: scale(1.12) rotate(3deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes copilot-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+.animate-pop-in {
+  animation: copilot-pop-in 340ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.animate-float {
+  animation: copilot-float 3.2s ease-in-out infinite;
+}

@@ -10,13 +10,14 @@ import {
   pn,
 } from "@/components/vscode/syntax";
 import { Badge, PanelTitle } from "@/components/vscode/ui";
+import PokemonCard from "@/components/pokemon/PokemonCard";
 
 const PROJECTS = [
   {
     name: "jonas-dev",
     desc: "This portfolio site — a VS Code–styled app built with Next.js, React, and Tailwind.",
     stars: "Live",
-    href: "https://jonas-dev-mu.vercel.app/",
+    href: "jns-smrt.space",
     color: "text-sky-300",
     live: true,
   },
@@ -105,6 +106,7 @@ export default function Projects() {
                     {p.href}
                   </div>
                 ) : null}
+                
                 <div className="mt-3 flex items-center justify-between">
                   <span className="font-mono text-[11px] text-fg-dim">
                     {p.live ? "Deployed on Vercel" : `★ ${p.stars}`}
@@ -164,6 +166,11 @@ export default function Projects() {
             >
               Contact me
             </a>
+          </div>
+
+          {/** Pokemon card */}
+          <div className="fixed bottom-4 right-4 z-50">
+            <PokemonCard />
           </div>
         </>
       }
