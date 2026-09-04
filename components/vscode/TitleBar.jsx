@@ -20,9 +20,9 @@ export default function TitleBar() {
   return (
     <header className="flex h-9 shrink-0 select-none items-center bg-title-bar text-[12px] text-fg-muted">
       <div className="flex min-w-0 items-center gap-2 pl-3">
-        <span className="truncate font-medium text-fg">jonas-dev</span>
+        <span className="truncate font-medium text-fg">Jonas.dev</span>
         <span className="hidden text-fg-dim md:inline">
-          — Visual Studio Code
+          — A VS Code-inspired Next.js app with tabs for navigation
         </span>
       </div>
 {/* 

@@ -8,7 +8,7 @@ import {
   va,
   pn,
 } from "@/components/vscode/syntax";
-import { Badge, PanelTitle, TextMuted } from "@/components/vscode/ui";
+import { Badge, GroupBadge, PanelTitle, TextMuted } from "@/components/vscode/ui";
 import ZoomImage from "@/components/vscode/ZoomImage";
 import Typewriter from "@/components/vscode/Typewriter";
 import profilePic from "@/app/resources/jonas-profile-pic.jpg";
@@ -62,22 +62,56 @@ const TIMELINE = [
   },
 ];
 
-const SKILLS = [
+const BACKENDDESKTOP = [
   "C#",
   ".NET",
   "WinForms",
-  "SQL Server",
   "Dapper",
+];
+
+const Database = [
+  "SQL Server",
   "T-SQL",
+  "Database Design",
+  "Query Optimization",
+];
+
+const ModernWeb = [
   "Next.js",
   "React",
   "TypeScript",
   "Tailwind CSS",
+];
+
+const BackendCloud = [
   "Supabase",
+  "Authentication & Authorization",
+  "API Integration",
+];
+
+const DevOpsTools = [
   "Git",
   "GitHub",
   "Vercel",
-];
+  "ClickOnce Deployment",
+]
+
+// const SKILLS = [
+//   "C#",
+//   ".NET",
+//   "WinForms",
+//   "SQL Server",
+//   "Dapper",
+//   "T-SQL",
+//   "Next.js",
+//   "React",
+//   "TypeScript",
+//   "Tailwind CSS",
+//   "Supabase",
+//   "Git",
+//   "GitHub",
+//   "Vercel",
+// ];
 
 export default function Home() {
   return (
@@ -98,7 +132,7 @@ export default function Home() {
               <div className="mx-auto max-w-5xl">
                 <div className="grid auto-rows-fr grid-cols-1 gap-4 md:grid-cols-3">
                   {/* Profile hero */}
-                  <div className="flex flex-col gap-4 rounded-md border border-chrome-strong bg-editor p-5 transition-colors duration-200 hover:border-orange-400/80 md:col-span-2">
+                  <div className="flex flex-col gap-4 rounded-md border border-chrome-strong bg-gray-900 p-5 transition-colors duration-200 hover:border-orange-400/80 md:col-span-2">
                     <div className="flex items-center gap-4">
                       <ZoomImage
                         src={profilePic.src}
@@ -113,11 +147,13 @@ export default function Home() {
                           Full-stack Developer
                         </div>
                         <div className="font-mono text-[11px] text-fg-dim">
-                          Castillejos Zambales, Philippines, 09054239012
+                          Castillejos Zambales, Philippines
                         </div>
                       </div>
                     </div>
-                    <Typewriter text="Experienced C#/.NET developer with a strong foundation in WinForms and SQL Server. Skilled in building business applications, optimizing database performance, and implementing modern web technologies. Passionate about continuous learning and contributing to innovative projects." />
+                    <span className="text-[15px]"> Hi, I'm Jonas! </span>
+                    <Typewriter text=" a C#/.NET developer with experience building business systems, working with databases, and improving existing applications.
+                    These days, I'm expanding into full-stack development with Next.js, React, TypeScript, and Supabase—while continuing to build, learn, and improve one project at a time." />
                     <div className="mt-auto flex flex-wrap gap-2">
                       <a
                         href="mailto:jonas27samarita@gmail.com"
@@ -144,20 +180,15 @@ export default function Home() {
 
                   {/* Current Skills */}
                   <div className="rounded-md border border-chrome-strong bg-editor p-5 transition-colors duration-200 hover:border-orange-400/80 md:col-span-1 md:row-span-2">
-                    <PanelTitle className="mb-0!">Current Skills</PanelTitle>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {SKILLS.map((s, i) => (
-                        <Badge
-                          key={s}
-                          color={
-                            i % 2 === 0
-                              ? "bg-selection text-sky-200"
-                              : "bg-selection text-teal-200"
-                          }
-                        >
-                          {s}
-                        </Badge>
-                      ))}
+                    <PanelTitle className="mb-0! text-lg">Current Skills</PanelTitle>
+                    <div className="mt-2 flex flex-col gap-2">
+
+                      <GroupBadge list={BACKENDDESKTOP} title="Backend & Desktop" />
+                      <GroupBadge list={Database} title="Database" />
+                      <GroupBadge list={ModernWeb} title="Modern Web" />
+                      <GroupBadge list={BackendCloud} title="Backend & Cloud" />
+                      <GroupBadge list={DevOpsTools} title="DevOps Tools" />
+
                     </div>
                   </div>
 
@@ -171,7 +202,7 @@ export default function Home() {
 
                       Business enterprise applications — automation, system improvements,
                       database-driven solutions, and application performance.
-                      
+
                     </TextMuted>
                   </div>
 

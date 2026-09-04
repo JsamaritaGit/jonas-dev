@@ -27,6 +27,29 @@ export function Badge({ children, color = "bg-selection text-sky-200" }) {
   );
 }
 
+export function GroupBadge({ list, title }) {
+  return (
+    <div>
+      <span className="text-[11px] font-semibold text-fg-dim">{title}</span>
+        <div className="flex flex-wrap gap-2">
+            
+          {list.map((s, i) => (
+            <Badge
+              key={s}
+              color={
+                i % 2 === 0
+                  ? "bg-selection text-sky-200"
+                  : "bg-selection text-teal-200"
+              }
+            >
+              {s}
+            </Badge>
+          ))}
+        </div>
+    </div>
+  )
+}
+
 export function PanelTitle({ children }) {
   return (
     <h2 className="mb-3 font-semibold text-fg">{children}</h2>

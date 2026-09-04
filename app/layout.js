@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "jonas-dev — Visual Studio Code",
-  description: "A Next.js app styled like the VS Code UI, with tabs for navigation.",
+  title: "jonas.dev — Visual Studio Code",
+  description: "A VS Code-inspired Next.js app with tabs for navigation and a sidebar for content.",
 };
 
 export default function RootLayout({ children }) {
