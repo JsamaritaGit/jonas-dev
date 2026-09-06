@@ -6,7 +6,7 @@ import { PokeballIcon, RefreshIcon } from "./icons";
 import { typeColor } from "./pokemon";
 
 // Approximate footprint of the sprite, used to keep it fully on screen.
-const SPRITE = 128;
+const SPRITE = 64;
 const EASE = "cubic-bezier(0.45, 0.05, 0.55, 0.95)";
 
 // Random waypoint for the roaming sprite, kept inside the editor area
@@ -15,7 +15,7 @@ function randomSpot() {
   if (typeof window === "undefined") return { x: 24, y: 160 };
   const w = window.innerWidth;
   const h = window.innerHeight;
-  const size = SPRITE + 24;
+  const size = SPRITE;
   const x = Math.round(16 + Math.random() * Math.max(1, w - size - 32));
   const y = Math.round(150 + Math.random() * Math.max(1, h - size - 90));
   return { x, y };
@@ -182,12 +182,12 @@ export default function PokemonCard() {
                   <img
                     src={pokemon.sprite}
                     alt={pokemon.name}
-                    width={120}
-                    height={120}
-                    className="h-24 w-24 object-contain drop-shadow-xl transition-transform duration-200 group-hover:scale-110 group-active:scale-95 md:h-28 md:w-28"
+                    width={60}
+                    height={60}
+                    className="h-12 w-12 object-contain drop-shadow-xl transition-transform duration-200 group-hover:scale-110 group-active:scale-95 md:h-14 md:w-14"
                   />
                 ) : (
-                  <PokeballIcon className="h-12 w-12 text-fg-dim" />
+                  <PokeballIcon className="h-6 w-6 text-fg-dim" />
                 )}
               </span>
             </button>

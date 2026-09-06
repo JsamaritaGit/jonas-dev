@@ -1,6 +1,7 @@
 export const dynamic = "force-dynamic";
 
 const POKEAPI = "https://pokeapi.co/api/v2";
+const POKEAPIGENII   = "https://raw.githubusercontent.com/PokeAPI/sprites";
 
 // Prefer the highest-resolution sprite available, falling back to the
 // standard front sprite so an image always exists.
@@ -20,15 +21,16 @@ export async function GET(_request, { params }) {
 
   try {
     const res = await fetch(`${POKEAPI}/pokemon/${id}`, { cache: "no-store" });
+    const gen2res = await fetch(`${POKEAPIGENII}/master/sprites/pokemon/versions/generation-ii/crystal/${id}.png`, { cache: "no-store" });
 
-    if (res.status === 404) {
+    if (gen2res.status === 404) {
       return Response.json(
         { error: `No Pokémon found for "${id}".` },
         { status: 404 }
       );
     }
-    if (!res.ok) {
-      throw new Error(`PokeAPI request failed: ${res.status}`);
+    if (!gen2res.ok) {
+      throw new Error(`PokeAPI request failed: ${gen2res.status}`);
     }
 
     const pokemon = await res.json();
@@ -53,6 +55,7 @@ export async function GET(_request, { params }) {
     });
   } catch (err) {
     console.error(`[/api/pokemon/${id}]`, err);
+    
     return Response.json(
       { error: "Could not load Pokémon details. Please try again." },
       { status: 502 }

@@ -22,9 +22,9 @@ const PROJECTS = [
     live: true,
   },
   {
-    name: "vscode-ui",
-    desc: "VS Code–styled app shell used to build this site.",
-    stars: "128",
+    name: "2d hobby Platform game",
+    desc: "A simple 2D platformer game built with Next.js .",
+    stars: "0",
     color: "text-orange-300",
   },
   {
